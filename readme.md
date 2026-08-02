@@ -14,3 +14,7 @@ This is my first project created through TripleTen's AI-Assisted Software Engine
 - HTML
 - CSS
 - JavaScript
+
+## Deployed site
+
+Check out the flashcards application (https://lennymccaslin.github.io/ai-se_project_flashcards/) on GitHub Pages.
