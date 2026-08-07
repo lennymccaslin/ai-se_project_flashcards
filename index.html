@@ -39,6 +39,51 @@
       </nav>
     </header>
     <main class="page__main-content">
+      <section class="gallery" id="deck-view">
+        <div class="gallery__header">
+          <h2 class="gallery__title"></h2>
+          <button
+            type="button"
+            class="gallery__practice-btn"
+            aria-label="practice deck"
+          >
+            Practice
+          </button>
+        </div>
+        <ul class="gallery__list">
+          <template id="card-template">
+            <li class="card card_color_green">
+              <h3 class="card__title"></h3>
+              <div class="card__row">
+                <button
+                  type="button"
+                  class="card__flip-btn"
+                  aria-label="flip card"
+                >
+                  <img src="./assets/images/flip.svg" alt="flip card button" />
+                </button>
+                <button
+                  type="button"
+                  class="card__delete-btn"
+                  aria-label="delete card"
+                >
+                  <img
+                    src="./assets/images/delete.svg"
+                    alt="delete deck button"
+                  />
+                </button>
+              </div>
+            </li>
+          </template>
+        </ul>
+        <button
+          type="button"
+          class="gallery__new-flashcard-btn"
+          aria-label="new card"
+        >
+          + New Deck
+        </button>
+      </section>
       <section class="gallery" id="home">
         <h2 class="gallery__title">My Decks</h2>
         <ul class="gallery__list">
@@ -64,7 +109,7 @@
         </ul>
         <button
           type="button"
-          class="gallery__new-deck-btn"
+          class="gallery__new-card-btn"
           aria-label="new deck"
         >
           + New Deck
