@@ -763,9 +763,7 @@ const galleryTemplateEL = document.querySelector("#gallery-template");
 const galleryListEl = document.querySelector(".gallery__list");
 
 function createDeckEl(deck) {
-  const cloneEl = galleryTemplateEL.content
-    .querySelector(".card")
-    .cloneNode(true);
+  const cloneEl = galleryTemplateEL.content.querySelector(".card").cloneNode(true);
 
   const deckTitleEl = cloneEl.querySelector(".card__title");
   const deckCountEl = cloneEl.querySelector(".card__count");

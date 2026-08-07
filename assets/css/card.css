@@ -1,0 +1,74 @@
+.card {
+  width: 325px;
+  height: 205px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.card__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.card__count {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.card__delete-btn {
+  height: 24px;
+  aspect-ratio: 1;
+  background-color: transparent;
+  opacity: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.card__delete-btn:hover {
+  opacity: 100%;
+}
+
+.card_color_green {
+  background-color: #64d583;
+}
+
+.card_color_blue {
+  background-color: #91a8f9;
+}
+
+.card_color_pink {
+  background-color: #ee92d7;
+}
+
+.card_color_purple {
+  background-color: #aa8ef0;
+}
+
+.card_color_orange {
+  background-color: #ee955e;
+}
+
+.card_color_yellow {
+  background-color: #f5d770;
+}

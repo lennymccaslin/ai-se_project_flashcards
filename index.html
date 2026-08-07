@@ -39,18 +39,18 @@
       </nav>
     </header>
     <main class="page__main-content">
-      <section class="decks" id="home">
-        <h2 class="decks__title">My Decks</h2>
-        <ul class="decks__list">
-          <template id="deck-template">
-            <li class="deck deck_color_green">
-              <a class="deck__link" href="#carousel"></a>
-              <h3 class="deck__title"></h3>
-              <div class="deck__row">
-                <p class="deck__count"></p>
+      <section class="gallery" id="home">
+        <h2 class="gallery__title">My Decks</h2>
+        <ul class="gallery__list">
+          <template id="gallery-template">
+            <li class="card card_color_green">
+              <a class="card__link" href="#carousel"></a>
+              <h3 class="card__title"></h3>
+              <div class="card__row">
+                <p class="card__count"></p>
                 <button
                   type="button"
-                  class="deck__delete-btn"
+                  class="card__delete-btn"
                   aria-label="delete deck"
                 >
                   <img
@@ -62,7 +62,11 @@
             </li>
           </template>
         </ul>
-        <button type="button" class="decks__new-deck-btn" aria-label="new deck">
+        <button
+          type="button"
+          class="gallery__new-deck-btn"
+          aria-label="new deck"
+        >
           + New Deck
         </button>
       </section>
