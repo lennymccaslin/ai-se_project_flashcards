@@ -49,6 +49,18 @@
   opacity: 100%;
 }
 
+.card__flip-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  opacity: 50%;
+}
+
+.card__flip-btn:hover {
+  opacity: 100%;
+}
+
 .card_color_green {
   background-color: #64d583;
 }

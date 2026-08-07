@@ -760,17 +760,19 @@ const decks = [
 ];
 
 const galleryTemplateEL = document.querySelector("#gallery-template");
-const galleryListEl = document.querySelector(".gallery__list");
+const galleryListEl = document.querySelector("#home .gallery__list");
 
 function createDeckEl(deck) {
-  const cloneEl = galleryTemplateEL.content.querySelector(".card").cloneNode(true);
+  const cloneEl = galleryTemplateEL.content
+    .querySelector(".card")
+    .cloneNode(true);
 
   const deckTitleEl = cloneEl.querySelector(".card__title");
   const deckCountEl = cloneEl.querySelector(".card__count");
   const deleteBtnEl = cloneEl.querySelector(".card__delete-btn");
   const deckLinkEl = cloneEl.querySelector(".card__link");
 
-  deckLinkEl.href = `#carousel/${deck.id}`;
+  deckLinkEl.href = `#deck-view/${deck.id}`;
 
   deckTitleEl.textContent = deck.name;
   deckCountEl.textContent = `${deck.cards.length} cards`;
