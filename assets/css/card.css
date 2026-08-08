@@ -84,3 +84,10 @@
 .card_color_yellow {
   background-color: #f5d770;
 }
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    margin: 0;
+  }
+}

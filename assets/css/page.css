@@ -25,3 +25,12 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 768px) {
+  .page {
+    padding: 20px;
+  }
+  .page__main-content {
+    margin-top: 42px;
+  }
+}
