@@ -28,7 +28,12 @@
 
 .gallery__list {
   list-style-type: none;
-  display: contents;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .gallery__new-card-btn {
@@ -108,10 +113,9 @@
 
 @media screen and (max-width: 768px) {
   .gallery {
-    display: grid;
-    grid-template-columns: 1fr;
-    p
-    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 0;
   }
 
   .gallery__header {
@@ -119,8 +123,35 @@
     margin: 0;
   }
 
+  .gallery__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+
   .gallery__title {
     font-size: 32px;
     margin: 0;
+  }
+
+  .gallery__new-card-btn {
+    background-color: #1a1a1a;
+    margin: 12px 0;
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    width: auto;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    height: 44px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }

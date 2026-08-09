@@ -1,6 +1,6 @@
 .card {
+  aspect-ratio: 16 / 10;
   width: 325px;
-  height: 205px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -33,6 +33,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.2;
+  margin: 0;
 }
 
 .card__delete-btn {
@@ -88,6 +89,7 @@
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
+    aspect-ratio: 16 / 10;
     margin: 0;
   }
 }
