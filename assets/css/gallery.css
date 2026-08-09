@@ -159,6 +159,17 @@
     text-align: center;
     z-index: 3;
   }
+  .gallery__new-card-btn:hover {
+    color: #ffffff;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+      ),
+      #1a1a1a;
+    cursor: pointer;
+  }
 
   .gallery__practice-btn,
   .gallery__new-flashcard-btn {

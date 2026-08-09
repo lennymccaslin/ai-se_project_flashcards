@@ -10,7 +10,43 @@ const notFoundSection = document.querySelector("#not-found");
 const carouselSection = document.querySelector("#carousel");
 const mainEl = document.querySelector(".page__main-content");
 
+const sections = {
+  home: homeSection,
+  about: aboutSection,
+  deckView: deckViewSection,
+  notFound: notFoundSection,
+  carousel: carouselSection,
+};
+
+function showView(currentSection, displayValue = "flex") {
+  Object.entries(sections).forEach(([key, el]) => {
+    if (el) el.style.display = key === currentSection ? displayValue : "none";
+  });
+
+  if (currentSection === "carousel") {
+    document.body.classList.add("page_view_carousel");
+  } else {
+    document.body.classList.remove("page_view_carousel");
+  }
+}
+
 function renderHomeView() {
+  showView("home", "flex");
+}
+
+function renderNotFoundView() {
+  showView("notFound", "flex");
+}
+
+function renderAboutView() {
+  if (aboutSection) {
+    showView("about", "block");
+  } else {
+    renderNotFoundView();
+  }
+}
+
+/*function renderHomeView() {
   homeSection.style.display = "flex";
   if (aboutSection) {
     aboutSection.style.display = "none";
@@ -45,7 +81,7 @@ function renderAboutView() {
   } else {
     renderNotFoundView();
   }
-}
+}*/
 
 function router() {
   const hash = window.location.hash.slice(1) || "home";
@@ -71,6 +107,12 @@ function router() {
     const deck = getDeckByID(deckId);
 
     if (deck) {
+      renderCarouselView(deck);
+      showView("carousel", "grid");
+      mainEl.classList.add("page__main-content_location_carousel");
+    } else {
+
+    /*if (deck) {
       homeSection.style.display = "none";
       if (aboutSection) {
         aboutSection.style.display = "none";
@@ -82,7 +124,7 @@ function router() {
       document.body.classList.add("page_view_carousel");
       console.log("class on body:", document.body.className);
       carouselSection.style.display = "grid";
-    } else {
+    } */
       renderNotFoundView();
     }
   } else {
