@@ -141,11 +141,11 @@
 
   .gallery__new-card-btn {
     background-color: #1a1a1a;
-    margin: 12px 0;
+    margin: 12px 0 12px;
     position: fixed;
     left: 20px;
     right: 20px;
-    bottom: 20px;
+    bottom: 63px;
     width: auto;
     max-width: calc(100vw - 40px);
     box-sizing: border-box;
@@ -157,12 +157,14 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    z-index: 3;
   }
 
   .gallery__practice-btn,
   .gallery__new-flashcard-btn {
     position: fixed;
-    bottom: 20px;
+    margin: 12px 0 12px;
+    bottom: 63px;
     height: 44px;
     border-radius: 8px;
     font-size: 18px;
@@ -172,7 +174,7 @@
     text-align: center;
     width: auto;
     box-sizing: border-box;
-    z-index: 2;
+    z-index: 3;
   }
 
   .gallery__practice-btn {

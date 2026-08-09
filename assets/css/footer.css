@@ -8,3 +8,24 @@
   letter-spacing: -0.16px;
   color: #00000080;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 156px;
+    margin: 0;
+    background-color: #fff;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+    z-index: 2;
+  }
+
+  .footer__text {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    margin: 0;
+  }
+}
