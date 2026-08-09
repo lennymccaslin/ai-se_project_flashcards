@@ -21,7 +21,7 @@
 }
 
 .page__main-content_location_carousel {
-  margin-top: 106px;
+  margin-top: 0;
   display: flex;
   justify-content: center;
 }

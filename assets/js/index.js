@@ -76,7 +76,7 @@ function router() {
       notFoundSection.style.display = "none";
       renderCarouselView(deck);
       mainEl.classList.add("page__main-content_location_carousel");
-      carouselSection.style.display = "flex";
+      carouselSection.style.display = "grid";
     } else {
       renderNotFoundView();
     }

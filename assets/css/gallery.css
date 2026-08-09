@@ -26,6 +26,10 @@
   margin-bottom: 20px;
 }
 
+#deck-view .gallery__title {
+  margin-bottom: 20px;
+}
+
 .gallery__list {
   list-style-type: none;
   display: flex;
@@ -153,5 +157,31 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+
+  .gallery__practice-btn,
+  .gallery__new-flashcard-btn {
+    position: fixed;
+    bottom: 20px;
+    height: 44px;
+    border-radius: 8px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
+  .gallery__practice-btn {
+    left: 20px;
+    right: calc(50% + 6px);
+  }
+
+  .gallery__new-flashcard-btn {
+    left: calc(50% + 6px);
+    right: 20px;
   }
 }
