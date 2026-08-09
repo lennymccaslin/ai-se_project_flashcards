@@ -1,4 +1,14 @@
-const decks = [
+import { generateModal } from "./modal.js";
+import { decks } from "./decks.js";
+
+const openModal = generateModal({
+  modalEl: document.querySelector("#confirm-modal"),
+  confirmBtnEl: document.querySelector(".modal__confirm-btn"),
+  cancelBtnEl: document.querySelector(".modal__cancel-btn"),
+  visibleClass: "modal_visible",
+});
+
+/*const decks = [
   {
     id: "html-basics",
     name: "HTML Basics",
@@ -757,7 +767,7 @@ const decks = [
     ],
     color: "#f5d770",
   },
-];
+];*/
 
 const galleryTemplateEL = document.querySelector("#gallery-template");
 const galleryListEl = document.querySelector("#home .gallery__list");
@@ -779,7 +789,7 @@ function createDeckEl(deck) {
   cloneEl.style.backgroundColor = deck.color || "#64d583";
 
   deleteBtnEl.addEventListener("click", () => {
-    cloneEl.remove();
+    openModal(() => cloneEl.remove());
   });
 
   return cloneEl;

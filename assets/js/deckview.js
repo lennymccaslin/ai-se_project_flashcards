@@ -1,3 +1,12 @@
+import { generateModal } from "./modal.js";
+
+const openModal = generateModal({
+  modalEl: document.querySelector("#confirm-modal"),
+  confirmBtnEl: document.querySelector(".modal__confirm-btn"),
+  cancelBtnEl: document.querySelector(".modal__cancel-btn"),
+  visibleClass: "modal_visible",
+});
+
 export function renderDeckView(deck) {
   const homeSection = document.querySelector("#home");
   const aboutSection = document.querySelector("#about");
@@ -44,7 +53,7 @@ export function renderDeckView(deck) {
     });
 
     deleteBtn.addEventListener("click", () => {
-      cloneEl.remove();
+      openModal(() => cloneEl.remove());
     });
 
     cardListEl.append(cloneEl);

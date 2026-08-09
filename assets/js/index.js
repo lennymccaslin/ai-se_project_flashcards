@@ -2,6 +2,7 @@ import { decks, getDeckByID } from "./gallery.js";
 import { stringToHex, hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckview.js";
+import { generateModal } from "./modal.js";
 
 const homeSection = document.querySelector("#home");
 const aboutSection = document.querySelector("#about");
@@ -111,8 +112,7 @@ function router() {
       showView("carousel", "grid");
       mainEl.classList.add("page__main-content_location_carousel");
     } else {
-
-    /*if (deck) {
+      /*if (deck) {
       homeSection.style.display = "none";
       if (aboutSection) {
         aboutSection.style.display = "none";
