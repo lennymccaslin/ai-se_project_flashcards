@@ -32,6 +32,7 @@
   .page_view_carousel .footer {
     mask-image: none;
     -webkit-mask-image: none;
-    z-index: -1;
+    height: 50px;
+    z-index: -2;
   }
 }

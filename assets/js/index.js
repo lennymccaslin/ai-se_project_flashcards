@@ -80,6 +80,7 @@ function router() {
       renderCarouselView(deck);
       mainEl.classList.add("page__main-content_location_carousel");
       document.body.classList.add("page_view_carousel");
+      console.log("class on body:", document.body.className);
       carouselSection.style.display = "grid";
     } else {
       renderNotFoundView();
