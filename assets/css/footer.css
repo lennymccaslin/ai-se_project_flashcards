@@ -15,10 +15,10 @@
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 156px;
+    height: 200px;
     margin: 0;
     background-color: #fff;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 50%);
     z-index: 2;
   }
 
@@ -27,5 +27,11 @@
     left: 20px;
     bottom: 20px;
     margin: 0;
+  }
+
+  .page_view_carousel .footer {
+    mask-image: none;
+    -webkit-mask-image: none;
+    z-index: -1;
   }
 }

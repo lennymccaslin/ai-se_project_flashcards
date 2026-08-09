@@ -18,6 +18,7 @@ function renderHomeView() {
   deckViewSection.style.display = "none";
   notFoundSection.style.display = "none";
   carouselSection.style.display = "none";
+  document.body.classList.remove("page_view_carousel");
 }
 
 function renderNotFoundView() {
@@ -28,6 +29,7 @@ function renderNotFoundView() {
   deckViewSection.style.display = "none";
   notFoundSection.style.display = "flex";
   carouselSection.style.display = "none";
+  document.body.classList.remove("page_view_carousel");
 }
 
 function renderAboutView() {
@@ -39,6 +41,7 @@ function renderAboutView() {
     deckViewSection.style.display = "none";
     notFoundSection.style.display = "none";
     carouselSection.style.display = "none";
+    document.body.classList.remove("page_view_carousel");
   } else {
     renderNotFoundView();
   }
@@ -76,6 +79,7 @@ function router() {
       notFoundSection.style.display = "none";
       renderCarouselView(deck);
       mainEl.classList.add("page__main-content_location_carousel");
+      document.body.classList.add("page_view_carousel");
       carouselSection.style.display = "grid";
     } else {
       renderNotFoundView();
