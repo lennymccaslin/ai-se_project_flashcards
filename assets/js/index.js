@@ -47,43 +47,6 @@ function renderAboutView() {
   }
 }
 
-/*function renderHomeView() {
-  homeSection.style.display = "flex";
-  if (aboutSection) {
-    aboutSection.style.display = "none";
-  }
-  deckViewSection.style.display = "none";
-  notFoundSection.style.display = "none";
-  carouselSection.style.display = "none";
-  document.body.classList.remove("page_view_carousel");
-}
-
-function renderNotFoundView() {
-  homeSection.style.display = "none";
-  if (aboutSection) {
-    aboutSection.style.display = "none";
-  }
-  deckViewSection.style.display = "none";
-  notFoundSection.style.display = "flex";
-  carouselSection.style.display = "none";
-  document.body.classList.remove("page_view_carousel");
-}
-
-function renderAboutView() {
-  const aboutEl = document.querySelector("#about");
-
-  if (aboutEl) {
-    homeSection.style.display = "none";
-    aboutEl.style.display = "block";
-    deckViewSection.style.display = "none";
-    notFoundSection.style.display = "none";
-    carouselSection.style.display = "none";
-    document.body.classList.remove("page_view_carousel");
-  } else {
-    renderNotFoundView();
-  }
-}*/
-
 function router() {
   const hash = window.location.hash.slice(1) || "home";
   mainEl.classList.remove("page__main-content_location_carousel");
@@ -112,19 +75,6 @@ function router() {
       showView("carousel", "grid");
       mainEl.classList.add("page__main-content_location_carousel");
     } else {
-      /*if (deck) {
-      homeSection.style.display = "none";
-      if (aboutSection) {
-        aboutSection.style.display = "none";
-      }
-      deckViewSection.style.display = "none";
-      notFoundSection.style.display = "none";
-      renderCarouselView(deck);
-      mainEl.classList.add("page__main-content_location_carousel");
-      document.body.classList.add("page_view_carousel");
-      console.log("class on body:", document.body.className);
-      carouselSection.style.display = "grid";
-    } */
       renderNotFoundView();
     }
   } else {
