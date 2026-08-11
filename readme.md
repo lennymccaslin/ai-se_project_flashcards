@@ -22,3 +22,7 @@ This is my first project created through TripleTen's AI-Assisted Software Engine
 ## Deployed site
 
 Check out the flashcards application (https://lennymccaslin.github.io/ai-se_project_flashcards/) on GitHub Pages.
+
+## Project Pitch Video
+
+Check out https://drive.google.com/file/d/1b_252phwrdGElyzyae5NPSWc4UiZJrdQ/view?usp=sharing, where I talk about my process for building the flashcards application.
