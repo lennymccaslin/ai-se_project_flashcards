@@ -29,11 +29,9 @@ export function renderDeckView(deck) {
 
   deckTitleEl.textContent = deck.name;
 
-  // Clear existing cards
   const existingCards = cardListEl.querySelectorAll(".card");
   existingCards.forEach((card) => card.remove());
 
-  // Render each card from the deck
   deck.cards.forEach((card) => {
     const cloneEl = cardTemplate.content.querySelector(".card").cloneNode(true);
     const cardTitleEl = cloneEl.querySelector(".card__title");
@@ -56,7 +54,11 @@ export function renderDeckView(deck) {
       openModal(() => cloneEl.remove());
     });
 
-    cardListEl.append(cloneEl);
+    const newCardBtn = cardListEl.querySelector(".gallery__new-flashcard-btn");
+    cardListEl.insertBefore(
+      cloneEl,
+      newCardBtn ? newCardBtn.closest("li") : null,
+    );
   });
 
   practiceBtn.onclick = () => {
