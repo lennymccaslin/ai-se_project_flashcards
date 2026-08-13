@@ -759,39 +759,6 @@ const decks = [
   },
 ];
 
-const galleryTemplateEL = document.querySelector("#gallery-template");
-const galleryListEl = document.querySelector(".gallery__list");
-
-function createDeckEl(deck) {
-  const cloneEl = galleryTemplateEL.content
-    .querySelector(".card")
-    .cloneNode(true);
-
-  const deckTitleEl = cloneEl.querySelector(".card__title");
-  const deckCountEl = cloneEl.querySelector(".card__count");
-  const deleteBtnEl = cloneEl.querySelector(".card__delete-btn");
-  const deckLinkEl = cloneEl.querySelector(".card__link");
-
-  deckLinkEl.href = `#carousel/${deck.id}`;
-
-  deckTitleEl.textContent = deck.name;
-  deckCountEl.textContent = `${deck.cards.length} cards`;
-  cloneEl.style.backgroundColor = deck.color || "#64d583";
-
-  deleteBtnEl.addEventListener("click", () => {
-    cloneEl.remove();
-  });
-
-  return cloneEl;
-}
-
-function renderDeckEl(deck) {
-  const deckEl = createDeckEl(deck);
-  galleryListEl.prepend(deckEl);
-}
-
-decks.forEach(renderDeckEl);
-
 /**
  * Retrieves a deck object by its ID from the decks array.
  *
