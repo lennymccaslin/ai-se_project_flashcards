@@ -9,6 +9,7 @@ const aboutSection = document.querySelector("#about");
 const deckViewSection = document.querySelector("#deck-view");
 const notFoundSection = document.querySelector("#not-found");
 const carouselSection = document.querySelector("#carousel");
+const newDeckSection = document.querySelector("#new-deck-view");
 const mainEl = document.querySelector(".page__main-content");
 
 const sections = {
@@ -17,6 +18,7 @@ const sections = {
   deckView: deckViewSection,
   notFound: notFoundSection,
   carousel: carouselSection,
+  newDeckView: newDeckSection,
 };
 
 function showView(currentSection, displayValue = "flex") {
@@ -45,6 +47,10 @@ function renderAboutView() {
   } else {
     renderNotFoundView();
   }
+}
+
+function renderNewDeckView() {
+  showView("newDeckView", "flex");
 }
 
 function router() {
@@ -77,10 +83,31 @@ function router() {
     } else {
       renderNotFoundView();
     }
+  } else if (hash === "new-deck-view") {
+    renderNewDeckView();
+    mainEl.classList.add("page__main-content_location_new-deck-view");
   } else {
     renderNotFoundView();
   }
 }
 
+const textarea = document.querySelector("#new-deck-view__text-area-input");
+const submitBtn = document.querySelector("#new-deck-view__submit-btn");
+
+const updateSubmitState = () => {
+  const minLength = Number(textarea.minLength || 0);
+  const isValid = textarea.value.trim().length >= minLength;
+
+  submitBtn.disabled = !isValid;
+};
+
+textarea.addEventListener("input", updateSubmitState);
+updateSubmitState();
+
+document
+  .querySelector("#home .gallery__new-card-btn")
+  .addEventListener("click", () => {
+    window.location.hash = "new-deck-view";
+  });
 window.addEventListener("DOMContentLoaded", router);
 window.addEventListener("hashchange", router);
