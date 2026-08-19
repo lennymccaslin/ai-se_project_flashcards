@@ -3,6 +3,7 @@ import { stringToHex, hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckview.js";
 import { generateModal } from "./modal.js";
+import * as newDeckView from "./new-deck-view.js";
 
 const homeSection = document.querySelector("#home");
 const aboutSection = document.querySelector("#about");
@@ -57,6 +58,7 @@ function router() {
   const hash = window.location.hash.slice(1) || "home";
   mainEl.classList.remove("page__main-content_location_carousel");
   mainEl.classList.remove("page__main-content_location_home");
+  mainEl.classList.remove("page__main-content_location_new-deck-view");
 
   if (hash === "home" || hash === "") {
     renderHomeView();
@@ -69,6 +71,7 @@ function router() {
 
     if (deck) {
       renderDeckView(deck);
+      newDeckSection.style.display = "none";
     } else {
       renderNotFoundView();
     }
@@ -90,19 +93,6 @@ function router() {
     renderNotFoundView();
   }
 }
-
-const textarea = document.querySelector("#new-deck-view__text-area-input");
-const submitBtn = document.querySelector("#new-deck-view__submit-btn");
-
-const updateSubmitState = () => {
-  const minLength = Number(textarea.minLength || 0);
-  const isValid = textarea.value.trim().length >= minLength;
-
-  submitBtn.disabled = !isValid;
-};
-
-textarea.addEventListener("input", updateSubmitState);
-updateSubmitState();
 
 document
   .querySelector("#home .gallery__new-card-btn")
