@@ -1,65 +1,18 @@
-/*const textarea = document.querySelector("#new-deck-view__text-area-input");
-const submitBtn = document.querySelector("#new-deck-view__submit-btn");
-const submitForm = document.querySelector("#new-deck-view-form");
-
-function normalizeColor(color) {
-  if (!color) {
-    return "#64d583";
-  }
-
-  let hex = "";
-  if (color.startsWith("#")) {
-    hex = color.slice(1);
-  } else {
-    hex = color;
-  }
-
-  if (/^[0-9a-fA-F]{6}$/.test(hex)) {
-    return "#" + hex.toLowerCase();
-  } else {
-    return "#64d583";
-  }
-}
-
-function slugify(str) {
-  const slug = str
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-  return slug;
-}
-
-function updateSubmitState() {
-  const minLength = Number(textarea.minLength || 0);
-  const isValid = textarea.value.trim().length >= minLength;
-
-  submitBtn.disabled = !isValid;
-}
-
-function createNewDeck(evt) {
-  evt.preventDefault();
-  const formData = new FormData(submitForm);
-  const data = Object.fromEntries(formData.entries());
-  const dataObject = JSON.parse(data["data-json"]);
-  normalizeColor(color);
-}
-
-submitForm.addEventListener("click");
-
-if (textarea && submitBtn) {
-  textarea.addEventListener("input", updateSubmitState);
-  updateSubmitState();
-}
-
-export { updateSubmitState }; */
-
 import { decks } from "./decks.js";
+import { generateModal } from "./modal.js";
 
 const textarea = document.querySelector("#new-deck-view__text-area-input");
 const submitBtn = document.querySelector("#new-deck-view__submit-btn");
 const submitForm = document.querySelector("#new-deck-view-form");
+const errorModal = document.querySelector("#error-modal");
+const errorModalClose = errorModal.querySelector(".modal__close");
+const errorMessageEl = errorModal.querySelector(".modal__error");
+const openErrorModal = generateModal({
+  modalEl: errorModal,
+  confirmBtnEl: null,
+  cancelBtnEl: errorModalClose,
+  visibleClass: "modal_visible",
+});
 
 function normalizeColor(color) {
   if (!color) return "#64d583";
@@ -92,42 +45,70 @@ function updateSubmitState() {
   submitBtn.disabled = !isValid;
 }
 
+function parseJSON(value) {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
+function validateName(name) {
+  if (typeof name !== "string") {
+    return null;
+  }
+
+  const trimmedName = name.trim();
+  if (trimmedName.length < 2 || trimmedName.length > 80) {
+    return null;
+  }
+
+  return trimmedName;
+}
+
 function createNewDeck(evt) {
   evt.preventDefault();
 
   const formData = new FormData(submitForm);
-  const data = Object.fromEntries(formData.entries());
+  const values = Object.fromEntries(formData.entries());
 
-  const jsonData = JSON.parse(data["data-json"]);
+  let isValid = true;
+
+  const jsonData = parseJSON(values["data-json"]);
+  if (jsonData === null) {
+    isValid = false;
+    showError("JSON parsing failed");
+    return;
+  }
+
+  const validName = validateName(jsonData.name);
+  if (validName === null) {
+    isValid = false;
+    showError("name must be a string between 2 and 80 characters");
+    return;
+  }
+
+  if (!Array.isArray(jsonData.cards)) {
+    isValid = false;
+    showError("cards must be an array");
+    return;
+  }
+
+  if (!isValid) {
+    return;
+  }
 
   const newDeck = {
-    id: `${slugify(jsonData.name)}-${Date.now()}`,
-    slug: `${slugify(jsonData.name)}-${Date.now()}`,
-    name: jsonData.name,
+    id: `${slugify(validName)}-${Date.now()}`,
+    slug: `${slugify(validName)}-${Date.now()}`,
+    name: validName,
     cards: jsonData.cards,
-    color: normalizeColor(data.color),
+    color: normalizeColor(values.color),
   };
 
   decks.push(newDeck);
   window.location.hash = `deck-view/${newDeck.id}`;
 }
-
-/*function createNewDeck(evt) {
-  evt.preventDefault();
-
-  const formData = new FormData(submitForm);
-  const data = Object.fromEntries(formData.entries());
-  const rawJson = data["data-json"];
-  const parsedDeck = JSON.parse(rawJson);
-  const slug = slugify(parsedDeck.title);
-  const normalizedColor = normalizeColor(data.color);
-
-  const newDeck = {
-    normalizedColor,
-    ...parsedDeck,
-    slug,
-  };
-}*/
 
 if (textarea && submitBtn && submitForm) {
   textarea.addEventListener("input", updateSubmitState);
@@ -135,4 +116,9 @@ if (textarea && submitBtn && submitForm) {
   updateSubmitState();
 }
 
-export { normalizeColor, slugify, createNewDeck, updateSubmitState };
+function showError(message) {
+  errorMessageEl.textContent = message;
+  openErrorModal();
+}
+
+export { normalizeColor, slugify, createNewDeck, updateSubmitState, showError };

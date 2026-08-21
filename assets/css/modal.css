@@ -72,3 +72,60 @@
     ),
     #1a1a1a;
 }
+
+#error-modal .modal__container {
+  background-color: #f5b0ad;
+  border-radius: 20px;
+  padding: 22px 20px 22px 20px;
+  max-width: 320px;
+  width: min(90vw, 430px);
+  aspect-ratio: 320 / 195;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+#error-modal .modal__title {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+#error-modal .modal__error {
+  font-family: "Suisse Intl", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+#error-modal .modal__close {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 46px;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-top: auto;
+  align-self: flex-end;
+  border: none;
+  border-radius: 8px;
+  background-color: #171717;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 135%;
+  cursor: pointer;
+  background-image: none;
+}
+
+#error-modal .modal__close:hover {
+  background-color: #2b2b2b;
+}
