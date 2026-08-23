@@ -800,8 +800,6 @@ function renderDeckEl(deck) {
   galleryListEl.prepend(deckEl);
 }
 
-decks.forEach(renderDeckEl);
-
 /**
  * Retrieves a deck object by its ID from the decks array.
  *
@@ -812,4 +810,4 @@ function getDeckByID(deckId) {
   return decks.find((deck) => deck.id === deckId);
 }
 
-export { decks, getDeckByID };
+export { decks, getDeckByID, renderDeckEl };

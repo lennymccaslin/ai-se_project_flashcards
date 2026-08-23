@@ -1,9 +1,10 @@
-import { decks, getDeckByID } from "./gallery.js";
+import { getDeckByID, renderDeckEl } from "./gallery.js";
 import { stringToHex, hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckview.js";
 import { generateModal } from "./modal.js";
 import * as newDeckView from "./new-deck-view.js";
+import { getDecks } from "./api.js";
 
 const homeSection = document.querySelector("#home");
 const aboutSection = document.querySelector("#about");
@@ -99,5 +100,16 @@ document
   .addEventListener("click", () => {
     window.location.hash = "new-deck-view";
   });
-window.addEventListener("DOMContentLoaded", router);
+window.addEventListener("DOMContentLoaded", (event) => {
+  getDecks()
+    .then((decks) => {
+      decks.forEach(renderDeckEl);
+    })
+    .catch(() => {
+      newDeckView.showError(error.message || error);
+    })
+    .finally(() => {
+      router();
+    });
+});
 window.addEventListener("hashchange", router);
