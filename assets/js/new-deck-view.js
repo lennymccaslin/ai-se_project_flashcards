@@ -1,5 +1,6 @@
-import { decks } from "./decks.js";
+import { fetchedDecks } from "./decks.js";
 import { generateModal } from "./modal.js";
+import { addDeck } from "./api.js";
 
 const textarea = document.querySelector("#new-deck-view__text-area-input");
 const submitBtn = document.querySelector("#new-deck-view__submit-btn");
@@ -98,16 +99,17 @@ function createNewDeck(evt) {
     return;
   }
 
-  const newDeck = {
-    _id: `${slugify(validName)}-${Date.now()}`,
+  addDeck({
     slug: `${slugify(validName)}-${Date.now()}`,
     name: validName,
     cards: jsonData.cards,
     color: normalizeColor(values.color),
-  };
-
-  decks.push(newDeck);
-  window.location.hash = `deck-view/${newDeck._id}`;
+  })
+    .then((newDeck) => {
+      fetchedDecks.push(newDeck);
+      window.location.hash = "deck/" + newDeck._id;
+    })
+    .catch(showError);
 }
 
 if (textarea && submitBtn && submitForm) {

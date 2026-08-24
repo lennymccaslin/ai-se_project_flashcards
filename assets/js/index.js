@@ -56,14 +56,6 @@ function showView(currentSection, displayValue = "flex") {
 
 function renderHomeView() {
   showView("home", "flex");
-  getDecks()
-    .then((decks) => {
-      fetchedDecks.push(...decks);
-      decks.forEach((deck) => renderDeckEl(deck, handleDeleteDeck));
-    })
-    .catch(() => {
-      showError("Error fetching decks");
-    });
 }
 
 function renderNotFoundView() {
@@ -127,12 +119,13 @@ document
   .addEventListener("click", () => {
     window.location.hash = "new-deck-view";
   });
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", () => {
   getDecks()
     .then((decks) => {
+      fetchedDecks.push(...decks);
       decks.forEach((deck) => renderDeckEl(deck, handleDeleteDeck));
     })
-    .catch(() => {
+    .catch((error) => {
       newDeckView.showError(error.message || error);
     })
     .finally(() => {
