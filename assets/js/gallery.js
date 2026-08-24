@@ -1,5 +1,4 @@
 import { generateModal } from "./modal.js";
-import { decks } from "./decks.js";
 
 const openModal = generateModal({
   modalEl: document.querySelector("#confirm-modal"),
@@ -782,7 +781,7 @@ function createDeckEl(deck) {
   const deleteBtnEl = cloneEl.querySelector(".card__delete-btn");
   const deckLinkEl = cloneEl.querySelector(".card__link");
 
-  deckLinkEl.href = `#deck-view/${deck.id}`;
+  deckLinkEl.href = `#deck-view/${deck._id}`;
 
   deckTitleEl.textContent = deck.name;
   deckCountEl.textContent = `${deck.cards.length} cards`;
@@ -800,14 +799,4 @@ function renderDeckEl(deck) {
   galleryListEl.prepend(deckEl);
 }
 
-/**
- * Retrieves a deck object by its ID from the decks array.
- *
- * @param {string} deckId - The unique identifier of the deck to retrieve
- * @returns {object|undefined} The deck object if found, undefined otherwise
- */
-function getDeckByID(deckId) {
-  return decks.find((deck) => deck.id === deckId);
-}
-
-export { decks, getDeckByID, renderDeckEl };
+export { renderDeckEl };

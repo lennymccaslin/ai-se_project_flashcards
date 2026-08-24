@@ -1,10 +1,11 @@
-import { getDeckByID, renderDeckEl } from "./gallery.js";
+import { renderDeckEl } from "./gallery.js";
 import { stringToHex, hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckview.js";
 import { generateModal } from "./modal.js";
 import * as newDeckView from "./new-deck-view.js";
 import { getDecks } from "./api.js";
+import { fetchedDecks, getDeckByID } from "./decks.js";
 
 const homeSection = document.querySelector("#home");
 const aboutSection = document.querySelector("#about");
@@ -37,6 +38,15 @@ function showView(currentSection, displayValue = "flex") {
 
 function renderHomeView() {
   showView("home", "flex");
+  getDecks()
+    .then((decks) => {
+      // Push the fetched decks onto the array
+      fetchedDecks.push(...decks);
+      decks.forEach(renderDeckEl);
+    })
+    .catch(() => {
+      showError("Error fetching decks");
+    });
 }
 
 function renderNotFoundView() {

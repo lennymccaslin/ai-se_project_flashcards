@@ -99,7 +99,7 @@ function createNewDeck(evt) {
   }
 
   const newDeck = {
-    id: `${slugify(validName)}-${Date.now()}`,
+    _id: `${slugify(validName)}-${Date.now()}`,
     slug: `${slugify(validName)}-${Date.now()}`,
     name: validName,
     cards: jsonData.cards,
@@ -107,7 +107,7 @@ function createNewDeck(evt) {
   };
 
   decks.push(newDeck);
-  window.location.hash = `deck-view/${newDeck.id}`;
+  window.location.hash = `deck-view/${newDeck._id}`;
 }
 
 if (textarea && submitBtn && submitForm) {

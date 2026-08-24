@@ -62,6 +62,6 @@ export function renderDeckView(deck) {
   });
 
   practiceBtn.onclick = () => {
-    window.location.hash = `#carousel/${deck.id}`;
+    window.location.hash = `#carousel/${deck._id}`;
   };
 }
