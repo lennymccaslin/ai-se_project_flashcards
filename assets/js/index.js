@@ -4,7 +4,7 @@ import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckview.js";
 import { generateModal } from "./modal.js";
 import * as newDeckView from "./new-deck-view.js";
-import { getDecks } from "./api.js";
+import { deleteDeck, getDecks } from "./api.js";
 import { fetchedDecks, getDeckByID } from "./decks.js";
 
 const homeSection = document.querySelector("#home");
@@ -24,6 +24,24 @@ const sections = {
   newDeckView: newDeckSection,
 };
 
+function handleDeleteDeck(deck, deckEl) {
+  deleteDeck(deck._id)
+    .then(() => {
+      deckEl.remove();
+
+      const deckIndex = fetchedDecks.findIndex(
+        (fetchedDeck) => fetchedDeck._id === deck._id,
+      );
+
+      if (deckIndex !== -1) {
+        fetchedDecks.splice(deckIndex, 1);
+      }
+    })
+    .catch((error) => {
+      console.error("Error deleting deck:", error);
+    });
+}
+
 function showView(currentSection, displayValue = "flex") {
   Object.entries(sections).forEach(([key, el]) => {
     if (el) el.style.display = key === currentSection ? displayValue : "none";
@@ -40,9 +58,8 @@ function renderHomeView() {
   showView("home", "flex");
   getDecks()
     .then((decks) => {
-      // Push the fetched decks onto the array
       fetchedDecks.push(...decks);
-      decks.forEach(renderDeckEl);
+      decks.forEach((deck) => renderDeckEl(deck, handleDeleteDeck));
     })
     .catch(() => {
       showError("Error fetching decks");
@@ -113,7 +130,7 @@ document
 window.addEventListener("DOMContentLoaded", (event) => {
   getDecks()
     .then((decks) => {
-      decks.forEach(renderDeckEl);
+      decks.forEach((deck) => renderDeckEl(deck, handleDeleteDeck));
     })
     .catch(() => {
       newDeckView.showError(error.message || error);
