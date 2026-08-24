@@ -9,20 +9,6 @@ const colorMap = {
 };
 
 /**
- * Returns a hexadecimal string corresponding to the provided color name
- * string. If it isn't found in the colorMap object, colorMap.default is
- * returned.
- *
- * @param {string} colorName
- * @returns a hexadecimal string
- */
-function stringToHex(colorName) {
-  const color = colorMap[colorName];
-
-  return color || colorMap.default;
-}
-
-/**
  * Accepts a hexadecimal string and returns the corresponding color name key,
  * if found in colorMap. If a match isn't found, null is returned.
  *
@@ -51,4 +37,4 @@ function removeColorClasses(element) {
   });
 }
 
-export { stringToHex, hexToString, removeColorClasses };
+export { hexToString, removeColorClasses };

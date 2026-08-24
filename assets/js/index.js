@@ -1,8 +1,6 @@
 import { renderDeckEl } from "./gallery.js";
-import { stringToHex, hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckview.js";
-import { generateModal } from "./modal.js";
 import * as newDeckView from "./new-deck-view.js";
 import { deleteDeck, getDecks } from "./api.js";
 import { fetchedDecks, getDeckByID } from "./decks.js";

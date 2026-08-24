@@ -27,16 +27,6 @@ function normalizeColor(color) {
   return "#64d583";
 }
 
-function slugify(str) {
-  const slug = str
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-  return slug;
-}
-
 function updateSubmitState() {
   if (!textarea || !submitBtn) return;
 
@@ -100,7 +90,6 @@ function createNewDeck(evt) {
   }
 
   addDeck({
-    slug: `${slugify(validName)}-${Date.now()}`,
     name: validName,
     cards: jsonData.cards,
     color: normalizeColor(values.color),
@@ -123,4 +112,4 @@ function showError(message) {
   openErrorModal();
 }
 
-export { normalizeColor, slugify, createNewDeck, updateSubmitState, showError };
+export { normalizeColor, createNewDeck, updateSubmitState, showError };
