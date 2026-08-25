@@ -30,4 +30,4 @@ Check out the flashcards application (https://lennymccaslin.github.io/ai-se_proj
 
 Check out https://drive.google.com/file/d/1b_252phwrdGElyzyae5NPSWc4UiZJrdQ/view?usp=sharing, where I talk about my process for building the flashcards application.
 
-PROJECT PART 9 VIDEO TO BE ADDED
+Check out https://drive.google.com/drive/folders/1nqbIXeiypxPGyN95P4PeM_AcjBPUlqYz?usp=sharing where I talk about adding in the API related functions and the about view.
