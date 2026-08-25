@@ -10,6 +10,13 @@ const openModal = generateModal({
 const galleryTemplateEL = document.querySelector("#gallery-template");
 const galleryListEl = document.querySelector("#home .gallery__list");
 
+/**
+ * Creates a deck card element from the gallery template.
+ *
+ * @param {object} deck - The deck object containing name, color, cards, and _id.
+ * @param {function} onDelete - Callback invoked with (deck, deckEl) when the delete button is confirmed.
+ * @returns {HTMLElement} The cloned and populated deck card element.
+ */
 function createDeckEl(deck, onDelete) {
   const cloneEl = galleryTemplateEL.content
     .querySelector(".card")
@@ -33,6 +40,12 @@ function createDeckEl(deck, onDelete) {
   return cloneEl;
 }
 
+/**
+ * Creates a deck element and prepends it to the gallery list.
+ *
+ * @param {object} deck - The deck object to render.
+ * @param {function} onDelete - Callback invoked with (deck, deckEl) when the delete button is confirmed.
+ */
 function renderDeckEl(deck, onDelete) {
   const deckEl = createDeckEl(deck, onDelete);
   galleryListEl.prepend(deckEl);

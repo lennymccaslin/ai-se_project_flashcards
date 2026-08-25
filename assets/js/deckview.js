@@ -7,6 +7,11 @@ const openModal = generateModal({
   visibleClass: "modal_visible",
 });
 
+/**
+ * Renders the deck view for a given deck, displaying all its cards and wiring up interactions.
+ *
+ * @param {object} deck - The deck object containing name, color, and cards array.
+ */
 export function renderDeckView(deck) {
   const homeSection = document.querySelector("#home");
   const aboutSection = document.querySelector("#about");

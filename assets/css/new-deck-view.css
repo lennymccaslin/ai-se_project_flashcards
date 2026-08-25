@@ -55,6 +55,10 @@
   border: 2px solid rgb(0 0 0 / 0.2);
 }
 
+.new-deck-view__color-input:focus {
+  border: 2px solid #1a1a1a;
+}
+
 .new-deck-view__color-input:hover {
   cursor: pointer;
 }
@@ -140,4 +144,40 @@
 .new-deck-view__submit-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+  .new-deck-view {
+    margin-left: 0;
+  }
+
+  .new-deck-view__title {
+    margin-top: 20px;
+  }
+
+  .new-deck-view__text-area_input {
+    width: calc(100vw - 40px);
+    box-sizing: border-box;
+  }
+
+  .new-deck-view__submit-btn {
+    background-color: #1a1a1a;
+    margin: 12px 0 12px;
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 63px;
+    width: auto;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    height: 44px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 3;
+  }
 }

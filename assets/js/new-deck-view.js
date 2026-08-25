@@ -15,6 +15,13 @@ const openErrorModal = generateModal({
   visibleClass: "modal_visible",
 });
 
+/**
+ * Normalizes a color value to a lowercase 6-digit hex string.
+ * Returns the default green color if the input is invalid or missing.
+ *
+ * @param {string} color - A hex color string with or without a leading "#".
+ * @returns {string} A normalized hex color string (e.g. "#64d583").
+ */
 function normalizeColor(color) {
   if (!color) return "#64d583";
 
@@ -27,6 +34,9 @@ function normalizeColor(color) {
   return "#64d583";
 }
 
+/**
+ * Enables or disables the submit button based on whether the textarea meets its minimum length.
+ */
 function updateSubmitState() {
   if (!textarea || !submitBtn) return;
 
@@ -36,6 +46,12 @@ function updateSubmitState() {
   submitBtn.disabled = !isValid;
 }
 
+/**
+ * Attempts to parse a JSON string, returning null if parsing fails.
+ *
+ * @param {string} value - The string to parse.
+ * @returns {object|null} The parsed object, or null if invalid JSON.
+ */
 function parseJSON(value) {
   try {
     return JSON.parse(value);
@@ -44,6 +60,12 @@ function parseJSON(value) {
   }
 }
 
+/**
+ * Validates a deck name, ensuring it is a string between 2 and 80 characters.
+ *
+ * @param {string} name - The name to validate.
+ * @returns {string|null} The trimmed name if valid, or null if invalid.
+ */
 function validateName(name) {
   if (typeof name !== "string") {
     return null;
@@ -57,6 +79,11 @@ function validateName(name) {
   return trimmedName;
 }
 
+/**
+ * Handles the new deck form submission: validates input, calls the API, and navigates on success.
+ *
+ * @param {SubmitEvent} evt - The form submit event.
+ */
 function createNewDeck(evt) {
   evt.preventDefault();
 
@@ -107,6 +134,11 @@ if (textarea && submitBtn && submitForm) {
   updateSubmitState();
 }
 
+/**
+ * Displays an error message in the error modal.
+ *
+ * @param {string} message - The error message to display.
+ */
 function showError(message) {
   errorMessageEl.textContent = message;
   openErrorModal();

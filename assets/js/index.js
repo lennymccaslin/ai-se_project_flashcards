@@ -1,4 +1,4 @@
-import { renderDeckEl } from "./gallery.js";
+﻿import { renderDeckEl } from "./gallery.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckview.js";
 import * as newDeckView from "./new-deck-view.js";
@@ -22,6 +22,12 @@ const sections = {
   newDeckView: newDeckSection,
 };
 
+/**
+ * Handles deletion of a deck: calls the API and removes the element from the DOM and fetchedDecks.
+ *
+ * @param {object} deck - The deck object to delete.
+ * @param {HTMLElement} deckEl - The deck's DOM element to remove.
+ */
 function handleDeleteDeck(deck, deckEl) {
   deleteDeck(deck._id)
     .then(() => {
@@ -40,6 +46,12 @@ function handleDeleteDeck(deck, deckEl) {
     });
 }
 
+/**
+ * Shows the specified section and hides all others. Optionally adds a carousel body class.
+ *
+ * @param {string} currentSection - The key of the section to show (must match a key in sections).
+ * @param {string} [displayValue="flex"] - The CSS display value to apply to the visible section.
+ */
 function showView(currentSection, displayValue = "flex") {
   Object.entries(sections).forEach(([key, el]) => {
     if (el) el.style.display = key === currentSection ? displayValue : "none";
@@ -52,14 +64,23 @@ function showView(currentSection, displayValue = "flex") {
   }
 }
 
+/**
+ * Renders the home view.
+ */
 function renderHomeView() {
   showView("home", "flex");
 }
 
+/**
+ * Renders the not-found view.
+ */
 function renderNotFoundView() {
   showView("notFound", "flex");
 }
 
+/**
+ * Renders the about view, or falls back to the not-found view if the section doesn't exist.
+ */
 function renderAboutView() {
   if (aboutSection) {
     showView("about", "block");
@@ -68,10 +89,16 @@ function renderAboutView() {
   }
 }
 
+/**
+ * Renders the new deck view.
+ */
 function renderNewDeckView() {
   showView("newDeckView", "flex");
 }
 
+/**
+ * Routes to the correct view based on the current URL hash.
+ */
 function router() {
   const hash = window.location.hash.slice(1) || "home";
   mainEl.classList.remove("page__main-content_location_carousel");

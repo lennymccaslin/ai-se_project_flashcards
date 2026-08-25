@@ -12,6 +12,9 @@ This is my first project created through TripleTen's AI-Assisted Software Engine
 - The deck view also has a button allowing the user to add a new card to the deck, as well as the practice button, which allows the user to navigate to the carousel view
 - The design of the application is responsive based on the viewport size: there is a separate view for mobile devices and desktop devices
 - When deleting a card or deck, a confirmation modal pops up and asks the user to confirm or cancel deletion
+- Decks can be created with the + New Deck button, which takes the user to the new deck form, which allows the user to pick a color and write up the JSON of the new deck.
+- An error modal appears any time there are any errors, describing the error.
+- Each named function is documented with JSDoc.
 
 ## Technologies used
 
