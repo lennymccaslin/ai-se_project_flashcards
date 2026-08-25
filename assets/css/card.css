@@ -1,6 +1,6 @@
 .card {
-  aspect-ratio: 16 / 10;
   width: 325px;
+  height: 205px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
