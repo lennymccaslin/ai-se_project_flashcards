@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
-  margin-left: 26.74vw;
+  margin-left: 13.37vw;
 }
 
 .new-deck-view__title {
@@ -108,7 +108,7 @@
 }
 
 .new-deck-view__text-area_input {
-  width: 100%;
+  width: 670px;
   min-height: 180px;
   box-sizing: border-box;
   border-radius: 8px;

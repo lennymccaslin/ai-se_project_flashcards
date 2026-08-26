@@ -13,6 +13,7 @@ This is my first project created through TripleTen's AI-Assisted Software Engine
 - The design of the application is responsive based on the viewport size: there is a separate view for mobile devices and desktop devices
 - When deleting a card or deck, a confirmation modal pops up and asks the user to confirm or cancel deletion
 - Decks can be created with the + New Deck button, which takes the user to the new deck form, which allows the user to pick a color and write up the JSON of the new deck.
+- Decks are retrieved from a remote API rather than locally hardcoded into the project.
 - An error modal appears any time there are any errors, describing the error.
 - Each named function is documented with JSDoc.
 

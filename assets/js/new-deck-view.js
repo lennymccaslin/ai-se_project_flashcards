@@ -123,7 +123,7 @@ function createNewDeck(evt) {
   })
     .then((newDeck) => {
       fetchedDecks.push(newDeck);
-      window.location.hash = "deck/" + newDeck._id;
+      window.location.hash = "deck-view/" + newDeck._id;
     })
     .catch(showError);
 }
